@@ -1,0 +1,28 @@
+with "arduino_due_startup";
+
+project Arduino_Due_Blink is
+
+   for Target use Arduino_Due_Startup'Target;
+   for Runtime use Arduino_due_Startup'Runtime;
+
+   for Main use ("main.adb");
+
+   package Builder is
+      for Executable ("main.adb") use "main.elf";
+   end Builder;
+
+   package Compiler is
+      for Switches ("Ada") use
+        ("-g",                   --  Debug information
+         "-gnat2022",            --  Ada2022 features
+         "-ffunction-sections",  --  Place each function in its own section
+         "-fdata-sections");     --  Place each data item in its own section
+   end Compiler;
+
+   package Linker is
+      for Switches ("Ada") use
+        Arduino_Due_Startup.Linker_Switches
+	       & ("-Wl,--gc-sections");  --  Perform a garbage collection of code and data never referenced
+   end Linker;
+
+end Arduino_Due_Blink;

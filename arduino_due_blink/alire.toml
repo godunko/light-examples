@@ -1,0 +1,11 @@
+name = "arduino_due_blink"
+description = "Shiny new project"
+version = "0.1.0-dev"
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+
+executables = ["arduino_due_blink"]
+[[depends-on]]
+light_arduino_due = "~0.1.0"
