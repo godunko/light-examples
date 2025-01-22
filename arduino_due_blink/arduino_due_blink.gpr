@@ -1,9 +1,9 @@
-with "arduino_due_startup";
+with "light_arduino_due";
 
 project Arduino_Due_Blink is
 
-   for Target use Arduino_Due_Startup'Target;
-   for Runtime use Arduino_due_Startup'Runtime;
+   for Target use Light_Arduino_Due'Target;
+   for Runtime use Light_Arduino_Due'Runtime;
 
    for Main use ("main.adb");
 
@@ -21,7 +21,7 @@ project Arduino_Due_Blink is
 
    package Linker is
       for Switches ("Ada") use
-        Arduino_Due_Startup.Linker_Switches
+        Light_Arduino_Due.Linker_Switches
 	       & ("-Wl,--gc-sections");  --  Perform a garbage collection of code and data never referenced
    end Linker;
 
